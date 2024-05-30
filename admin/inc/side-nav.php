@@ -10,14 +10,17 @@ if(isset($key) && $key == "hhdsfs1263z"){
                     <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
                 </label>
             </h2>
-            <i class="fa fa-user" aria-hidden="true"></i>
+            <div class="d-flex align-items-center">
+            <i class="fa fa-user" aria-hidden="true"></i>&nbsp;
+            <span> @<?php echo $_SESSION['username'];?></span>
+            </div>
         </header>
         <div class="body">
             <nav class="side-bar">
                 <div class="user-p">
-                    <h4>@<?php echo $_SESSION['username'];?></h4>
+                    
                 </div>
-                <ul>
+                <ul id="navList">
                     <li>
                         <a href="Users.php">
                             <i class="fa fa-users" aria-hidden="true"></i>

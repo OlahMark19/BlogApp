@@ -7,7 +7,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - Users</title>
+    <title>Dashboard - Posts</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -18,12 +18,12 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
     <?php 
     $key = "hhdsfs1263z";
     include "inc/side-nav.php";
-    include_once("data/User.php");
+    include_once("data/Post.php");
     include_once("../db_conn.php");
-    $users = getAll($conn);
+    $posts = getAll($conn);
     ?>
     <div class="main-table">
-        <h3 class="mb-3">All Users <a href="../signup.php" class="btn btn-success">Add New</a></h3>
+        <h3 class="mb-3">All Posts <a href="post-add.php" class="btn btn-success">Add New</a></h3>
         
         <?php if (isset($_GET['error'])) { ?>
             <div class="alert alert-warning"><?= htmlspecialchars($_GET['error']) ?></div>
@@ -37,20 +37,20 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Username</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Text</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (!empty($users)) { ?>
-                    <?php foreach ($users as $user) { ?>
+                <?php if (!empty($posts)) { ?>
+                    <?php foreach ($posts as $post) { ?>
                         <tr>
-                            <th scope="row"><?= $user['id'] ?></th>
-                            <td><?= htmlspecialchars($user['fname']) ?></td>
-                            <td><?= htmlspecialchars($user['username']) ?></td>
+                            <th scope="row"><?= $post['post_id'] ?></th>
+                            <td><?= htmlspecialchars($post['post_title']) ?></td>
+                            <td><?= htmlspecialchars($post['post_text']) ?></td>
                             <td>
-                                <a href="user-delete.php?user_id=<?= $user['id'] ?>" class="btn btn-danger">Delete</a>
+                                <a href="post-delete.php?post_id=<?= $post['post_id'] ?>" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -64,7 +64,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
     </div>
     <script>
         var navList = document.getElementById('navList').children;
-        navList.item(0).classList.add("active");
+        navList.item(1).classList.add("active");
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

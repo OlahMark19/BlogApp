@@ -59,6 +59,9 @@
 .side-bar ul li:hover {
 	background: #127b8e;
 }
+.side-bar ul .active{
+	background: #127b8e;
+}
 .side-bar ul li a {
 	text-decoration: none;
 	color: #eee;
