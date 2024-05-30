@@ -1,0 +1,19 @@
+.main-blog-card{
+    width: 90%;
+}
+.category-aside{
+    width: 100%;
+}
+.main-blog{
+    width: 70%;
+}
+.aside-main{
+    width: 30%;
+}
+
+.w-450{
+    width: 450px;
+}
+.vh-100{
+    min-height: 100vh;
+}
