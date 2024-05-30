@@ -29,6 +29,7 @@ if(isset($_POST['fname']) &&
     	// hashing the password
     	$pass = password_hash($pass, PASSWORD_DEFAULT);
 
+
     	$sql = "INSERT INTO users(fname, username, password) 
     	        VALUES(?,?,?)";
     	$stmt = $conn->prepare($sql);

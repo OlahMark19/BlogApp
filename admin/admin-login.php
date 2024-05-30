@@ -13,15 +13,15 @@ if(isset($_POST['uname']) &&
     
     if(empty($uname)){
     	$em = "User name is required";
-    	header("Location: ../login.php?error=$em&$data");
+    	header("Location: ../admin-login.php?error=$em&$data");
 	    exit;
     }else if(empty($pass)){
     	$em = "Password is required";
-    	header("Location: ../login.php?error=$em&$data");
+    	header("Location: ../admin-login.php?error=$em&$data");
 	    exit;
     }else {
 
-    	$sql = "SELECT * FROM users WHERE username = ?";
+    	$sql = "SELECT * FROM admin WHERE username = ?";
     	$stmt = $conn->prepare($sql);
     	$stmt->execute([$uname]);
 
@@ -30,30 +30,29 @@ if(isset($_POST['uname']) &&
 
           $username =  $user['username'];
           $password =  $user['password'];
-          $fname =  $user['fname'];
           $id =  $user['id'];
           if($username === $uname){
              if(password_verify($pass, $password)){
-                 $_SESSION['id'] = $id;
-                 $_SESSION['fname'] = $fname;
+                 $_SESSION['admin_id'] = $id;
+                 $_SESSION['username'] = $username;
 
-                 header("Location: ../blog.php");
+                 header("Location: users.php");
                  exit;
              }else {
                $em = "Incorect User name or password";
-               header("Location: ../login.php?error=$em&$data");
+               header("Location: ../admin-login.php?error=$em&$data");
                exit;
             }
 
           }else {
             $em = "Incorect User name or password";
-            header("Location: ../login.php?error=$em&$data");
+            header("Location: ../admin-login.php?error=$em&$data");
             exit;
          }
 
       }else {
          $em = "Incorect User name or password";
-         header("Location: ../login.php?error=$em&$data");
+         header("Location: ../admin-login.php?error=$em&$data");
          exit;
       }
     }
