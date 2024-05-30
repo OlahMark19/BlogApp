@@ -15,8 +15,7 @@ if(isset($key) && $key == "hhdsfs1263z"){
         <div class="body">
             <nav class="side-bar">
                 <div class="user-p">
-                    <img src="../img/user.jpg">
-                    <h4>Admin</h4>
+                    <h4>@<?php echo $_SESSION['username'];?></h4>
                 </div>
                 <ul>
                     <li>

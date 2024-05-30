@@ -18,7 +18,7 @@
             <p>Only for administrate</p>
     		<?php if(isset($_GET['error'])){ ?>
     		<div class="alert alert-danger" role="alert">
-			  <?php echo $_GET['error']; ?>
+			  <?php echo htmlspecialchars($_GET['error']); ?>
 			</div>
 		    <?php } ?>
 
@@ -27,7 +27,7 @@
 		    <input type="text" 
 		           class="form-control"
 		           name="uname"
-		           value="<?php echo (isset($_GET['uname']))?$_GET['uname']:"" ?>">
+		           value="<?php echo (isset($_GET['uname']))?htmlspecialchars($_GET['uname']):"" ?>">
 		  </div>
 
 		  <div class="mb-3">
