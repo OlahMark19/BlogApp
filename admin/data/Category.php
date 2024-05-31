@@ -3,7 +3,7 @@
 //Get All Users
 
 function getAll($conn){
-    $sql = "SELECT * FROM post";
+    $sql = "SELECT * FROM category";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 
@@ -17,20 +17,6 @@ function getAll($conn){
 }
 
 function getById($conn, $id){
-    $sql = "SELECT * FROM post WHERE post_id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$id]);
-
-    if($stmt->rowCount() >= 1){
-        $data = $stmt->fetch();
-        return $data;
-    }else{
-        return 0;
-    }
-
-}
-
-function getCategoryById($conn, $id){
     $sql = "SELECT * FROM category WHERE id=?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$id]);
@@ -43,24 +29,10 @@ function getCategoryById($conn, $id){
     }
 
 }
-
-function getAllCategories($conn){
-    $sql = "SELECT * FROM category";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-
-    if($stmt->rowCount() >= 1){
-        $data = $stmt->fetchAll();
-        return $data;
-    }else{
-        return 0;
-    }
-
-}
 //Delete by ID
 
 function deleteById($conn, $id){
-    $sql = "DELETE FROM post WHERE post_id=? ";
+    $sql = "DELETE FROM category WHERE id=? ";
     $stmt = $conn->prepare($sql);
     $res = $stmt->execute([$id]);
 

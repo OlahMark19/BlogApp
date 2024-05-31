@@ -6,6 +6,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])  && isset($_GET
     include_once("data/Post.php");
     include_once("../db_conn.php");
     $post = getById($conn, $post_id);
+    $category = getCategoryById($conn, $post['category']);
 ?>
 
 <!DOCTYPE html>
@@ -31,19 +32,11 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])  && isset($_GET
                 <div class="card-body">
                     <h5 class="card-title"><?=$post['post_title'] ?></h5>
                     <?=$post['post_text'] ?>
-                    <p class="card-text"> 
-                        <small class="text-body-secondary"><?=$post['created_at'] ?></small>
-                    <a href="#" class="btn btn-primary">Read more</a>
+                    <hr>
+                    <p class="card-text d-flex justify-content-between"> 
+                        <b>Category: <?=$category['category']?></b>
+                        <small class="text-body-secondary">Date: <?=$post['created_at'] ?></small>
                 </div>
-                </div>
-                <div class="card main-blog-card mb-5">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Blog title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <p class="card-text"> 
-                        <small class="text-body-secondary">Last updated 3 mins ago</small>
-                    <a href="#" class="btn btn-primary">Read more</a>
          </div>
     
         
