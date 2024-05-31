@@ -41,7 +41,8 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
         
         <form class="shadow p-3" 
     	      action="req/post-create.php" 
-    	      method="post">
+    	      method="post"
+              enctype="multipart/form-data">
 
 
 		  <div class="mb-3">

@@ -16,6 +16,8 @@ function getAll($conn){
 
 }
 
+
+
 //Delete by ID
 
 function deleteById($conn, $id){

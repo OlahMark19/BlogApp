@@ -47,7 +47,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
                     <?php foreach ($posts as $post) { ?>
                         <tr>
                             <th scope="row"><?= $post['post_id'] ?></th>
-                            <td><?= htmlspecialchars($post['post_title']) ?></td>
+                            <td><a href="single_post.php?post_id=<?=$post['post_id'] ?>"><?= htmlspecialchars($post['post_title']) ?></a></td>
                             <td><?= htmlspecialchars($post['post_text']) ?></td>
                             <td>
                                 <a href="post-delete.php?post_id=<?= $post['post_id'] ?>" class="btn btn-danger">Delete</a>

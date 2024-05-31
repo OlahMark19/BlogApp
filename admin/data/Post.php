@@ -16,6 +16,19 @@ function getAll($conn){
 
 }
 
+function getById($conn, $id){
+    $sql = "SELECT * FROM post WHERE post_id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id]);
+
+    if($stmt->rowCount() >= 1){
+        $data = $stmt->fetch();
+        return $data;
+    }else{
+        return 0;
+    }
+
+}
 //Delete by ID
 
 function deleteById($conn, $id){
