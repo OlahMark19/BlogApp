@@ -39,14 +39,9 @@ if(isset($key) && $key == "hhdsfs1263z"){
                             <span>Category</span>
                         </a>
                     </li>
+                    
                     <li>
-                        <a href="#">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            <span>Message</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                        <a href="Comment.php">
                             <i class="fa fa-comment-o" aria-hidden="true"></i>
                             <span>Comment</span>
                         </a>

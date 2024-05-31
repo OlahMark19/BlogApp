@@ -7,7 +7,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - Posts</title>
+    <title>Dashboard - Comments</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -18,13 +18,13 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
     <?php 
     $key = "hhdsfs1263z";
     include "inc/side-nav.php";
-    include_once("data/Post.php");
     include_once("data/Comment.php");
+    include_once("data/Post.php");
     include_once("../db_conn.php");
-    $posts = getAll($conn);
+    $comments = getAllComment($conn);
     ?>
     <div class="main-table">
-        <h3 class="mb-3">All Posts <a href="post-add.php" class="btn btn-success">Add New</a></h3>
+        <h3 class="mb-3">All Comments </h3>
         
         <?php if (isset($_GET['error'])) { ?>
             <div class="alert alert-warning"><?= htmlspecialchars($_GET['error']) ?></div>
@@ -38,39 +38,34 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Comments</th>
-                    <th scope="col">Likes</th>
+                    <th scope="col">Post Title</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">User</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (!empty($posts)) { ?>
-                    <?php foreach ($posts as $post) { 
-                         $category = getCategoryById($conn, $post['category']);
+                <?php if (!empty($comments)) { ?>
+                    <?php foreach ($comments as $comments) { 
                         ?>
                         <tr>
-                            <th scope="row"><?= $post['post_id'] ?></th>
-                            <td><a href="single_post.php?post_id=<?=$post['post_id'] ?>"><?= $post['post_title'] ?></a></td>
+                            <th scope="row"><?= $comment['comment_id'] ?></th>
                             <td>
-                                <?=$category['category']?>
+                                <a href="single_post.php?post_id=<?=$comment['post_id']?>">
+                                <?php
+                                $p = getById($conn, $comment['post_id']); 
+                                echo $p['post_title']?>?></a>
                             </td>
                             <td>
-                                <i class="fa fa-comment" aria-hidden="true"></i>
-                            <?php 
-                              echo CountByPostId($conn, $post['post_id']);
-                            ?>
+                                <?=$comment['comment']?>
                             </td>
                             <td>
-                                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                <?php 
-                                  echo likeCountByPostId($conn, $post['post_id']);
-                                 ?>
+                                <?php
+                                $u = getUserById($conn, $comment['user_id']); 
+                                echo  '@'. $u['username'];?>
                             </td>
                             <td>
-                                <a href="post-delete.php?post_id=<?= $post['post_id'] ?>" class="btn btn-danger">Delete</a>
-                                <a href="post-edit.php?post_id=<?= $post['post_id'] ?>" class="btn btn-warning">Edit</a>
+                                <a href="comment-delete.php?comment_id=<?= $comment['comment_id'] ?>" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -84,7 +79,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
     </div>
     <script>
         var navList = document.getElementById('navList').children;
-        navList.item(1).classList.add("active");
+        navList.item(3).classList.add("active");
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
