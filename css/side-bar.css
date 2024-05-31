@@ -4,6 +4,16 @@
 	box-sizing: border-box;
 	font-family: arial, sans-serif;
 }
+.main-profile-link a{
+	text-decoration: none;
+	color: #eee;
+}
+.main-profile-link i:hover {
+	color: #127b8e;
+}
+.main-profile-link a:hover {
+	color: #127b8e;
+}
 .header {
 	display: flex;
 	justify-content: space-between;

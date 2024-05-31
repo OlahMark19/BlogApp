@@ -46,7 +46,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
             </thead>
             <tbody>
                 <?php if (!empty($comments)) { ?>
-                    <?php foreach ($comments as $comments) { 
+                    <?php foreach ($comments as $comment) { 
                         ?>
                         <tr>
                             <th scope="row"><?= $comment['comment_id'] ?></th>

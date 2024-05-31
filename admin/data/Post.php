@@ -43,7 +43,7 @@ function getCategoryById($conn, $id){
     }
 
 }
-function getUsersById($conn, $id){
+function getUserById($conn, $id){
     $sql = "SELECT id, fname, username FROM users WHERE id=?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$id]);
