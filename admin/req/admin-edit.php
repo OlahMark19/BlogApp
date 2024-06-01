@@ -8,7 +8,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $username = $_POST['username'];
-        $id = $_SESSION['admin_id']
+        $id = $_SESSION['admin_id'];
 
         if(empty($fname)){
             $em = "First name is required";
