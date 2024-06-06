@@ -41,7 +41,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['username'])) {
                     $img_ex = pathinfo($image_name, PATHINFO_EXTENSION);
                     $image_ex = strtolower($image_ex);
                     
-                    $allowed_exs = array('jpg', 'jpeg', 'png');
+                    $allowed_exs = array('.jpg', '.jpeg', '.png');
 
                     if(in_array($image_ex, $allowed_exs)){
                         $new_image_name = uniquid("COVER-", true).'.'.$image_ex;

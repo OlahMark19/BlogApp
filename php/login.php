@@ -34,8 +34,8 @@ if(isset($_POST['uname']) &&
           $id =  $user['id'];
           if($username === $uname){
              if(password_verify($pass, $password)){
-                 $_SESSION['id'] = $id;
-                 $_SESSION['fname'] = $fname;
+                 $_SESSION['user_id'] = $id;
+                 $_SESSION['username'] = $username;
 
                  header("Location: ../blog.php");
                  exit;

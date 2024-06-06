@@ -23,9 +23,24 @@
                 <li><a class="dropdown-item" href="Category.php">Category 2</a></li>
             </li>
             </ul>
+            <?php
+                if($logged){         
+            ?>
             <li class="nav-item">
+            <a class="nav-link" href="profile.php">@<?=$_SESSION['username']?></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="logout.php">Logout</a>
+            </li>
+            <?php
+                }else{
+            ?>
+             <li class="nav-item">
             <a class="nav-link" href="login.php">Login | Signup</a>
             </li>
+            <?php
+                }
+            ?>
     </div>
     <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

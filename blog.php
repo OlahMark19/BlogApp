@@ -1,3 +1,11 @@
+<?php
+session_start();
+$logged = false;
+if(isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+    $logged = true;}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,17 +43,20 @@
                     <a href="blog-view.php?post_id=<?=$post['post_id']?>" class="btn btn-primary">Read more</a>
                     <hr>
                         <div class="d-flex justify-content-between">
-                        <div>
-                             <i class="fa fa-thumbs-up" aria-hidden="true"></i>comments(
-                                <?php 
-                                  echo likeCountByPostId($conn, $post['post_id']);
-                                 ?>
-                                )
-                                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>likes(
+                        <div class="react-btns">
+                        <i class="fa fa-thumbs-up like" aria-hidden="true"></i>Likes(
                                 <?php 
                                   echo likeCountByPostId($conn, $post['post_id']);
                                  ?>
                                  )
+                                 <a href="blog-view.php?post_id=<?=$post['post_id']?>#comments">
+                             <i class="fa fa-comment" aria-hidden="true"></i>comments(
+                                <?php 
+                                  echo likeCountByPostId($conn, $post['post_id']);
+                                 ?>
+                                )
+                             </a>
+                                 
                                  </div>
                                  <small class="text-body-secondary"><?=$post['created_at']?> </small>
                     

@@ -38,14 +38,27 @@ function CountByPostId($conn, $id){
 
 }
 
-function likeCountByPostId($conn, $id){
+function getCommentsByPostId($conn, $id){
     $sql = "SELECT * FROM post_like WHERE post_id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id]);
+
+    if($stmt->rowCount() >= 1){
+        $data = $stmt->fetchAll();
+        return $data;
+    }else{
+        return 0;
+    }
+}
+function likeCountByPostId($conn, $id){
+    $sql = "SELECT * FROM comment WHERE post_id=?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$id]);
 
     return $stmt->rowCount();
 
 }
+
 //Delete by ID
 
 function deleteCommentById($conn, $id){
